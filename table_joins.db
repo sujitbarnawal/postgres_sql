@@ -1,0 +1,133 @@
+CREATE TABLE basket_a (
+    a INT PRIMARY KEY,
+    fruit_a VARCHAR (100) NOT NULL
+);
+
+CREATE TABLE basket_b (
+    b INT PRIMARY KEY,
+    fruit_b VARCHAR (100) NOT NULL
+);
+
+INSERT INTO basket_a (a, fruit_a)
+VALUES
+    (1, 'Apple'),
+    (2, 'Orange'),
+    (3, 'Banana'),
+    (4, 'Cucumber');
+
+INSERT INTO basket_b (b, fruit_b)
+VALUES
+    (1, 'Orange'),
+    (2, 'Apple'),
+    (3, 'Watermelon'),
+    (4, 'Pear');
+
+// Inner Join
+SELECT a,fruit_a,b,fruit_b from
+basket_a inner join basket_b on fruit_a=fruit_b;
+
+//Left Join
+SELECT a,fruit_a,b,fruit_b from
+basket_a left join basket_b on fruit_a=fruit_b;
+
+
+//Left Anti Join
+SELECT a,fruit_a,b,fruit_b from
+basket_a left join basket_b on fruit_a=fruit_b
+where b is NULL;
+
+//Right Join
+SELECT a,fruit_a,b,fruit_b from 
+basket_a right join basket_b on fruit_a = fruit_b;
+
+//Right Anti Join
+SELECT a,fruit_a,b,fruit_b from 
+basket_a right join basket_b on fruit_a = fruit_b
+where a is NULL;
+
+//Full Outer Join
+SELECT a,fruit_a,b,fruit_b from
+basket_a full outer join basket_b on fruit_a=fruit_b;
+
+
+//Full Anti Join
+SELECT a,fruit_a,b,fruit_b from
+basket_a full outer join basket_b on fruit_a=fruit_b
+where a is NULL or b is NULL;
+
+// Using Table Aliases
+SELECT f.title
+FROM film AS f
+ORDER BY f.title
+LIMIT 5;
+
+//Inner Join'
+SELECT 
+customer.customer_id,customer.first_name,customer.last_name,
+payment.amount,payment.payment_date
+FROM customer inner join payment
+on customer.customer_id = payment.customer_id
+order by payment.payment_date;
+
+SELECT c.customer_id,
+c.first_name || ' ' || c.last_name as customer_name,
+s.first_name || ' ' || s.last_name as staff_name,
+p.amount,
+p.payment_date from
+customer c inner join payment p using(customer_id)
+inner join staff s using(staff_id);
+
+//Self Join
+CREATE TABLE employee (
+  employee_id INT PRIMARY KEY,
+  first_name VARCHAR (255) NOT NULL,
+  last_name VARCHAR (255) NOT NULL,
+  manager_id INT,
+  FOREIGN KEY (manager_id) REFERENCES employee (employee_id) ON DELETE CASCADE
+);
+INSERT INTO employee (employee_id, first_name, last_name, manager_id)
+VALUES
+  (1, 'Windy', 'Hays', NULL),
+  (2, 'Ava', 'Christensen', 1),
+  (3, 'Hassan', 'Conner', 1),
+  (4, 'Anna', 'Reeves', 2),
+  (5, 'Sau', 'Norman', 2),
+  (6, 'Kelsie', 'Hays', 3),
+  (7, 'Tory', 'Goff', 3),
+  (8, 'Salley', 'Lester', 3);
+
+SELECT * FROM employee;
+
+SELECT e.first_name || ' ' || e.last_name as employee_name,
+m.first_name || ' ' || m.last_name as manager_name
+from employee e inner join employee m
+on m.employee_id=e.manager_id
+order by manager_name;
+
+//Cross Join
+DROP TABLE IF EXISTS T1;
+
+CREATE TABLE
+  T1 (LABEL CHAR(1) PRIMARY KEY);
+
+DROP TABLE IF EXISTS T2;
+
+CREATE TABLE
+  T2 (score INT PRIMARY KEY);
+
+INSERT INTO
+  T1 (LABEL)
+VALUES
+  ('A'),
+  ('B');
+
+INSERT INTO
+  T2 (score)
+VALUES
+  (1),
+  (2),
+  (3);
+
+SELECT T1.LABEL,T2.score 
+from T1 cross join T2;
+
