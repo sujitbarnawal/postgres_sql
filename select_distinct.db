@@ -1,0 +1,20 @@
+SELECT DISTINCT first_name,last_name from customer limit 5;
+
+create table colors(
+    id serial primary key,
+    bcolor varchar,
+    fcolor varchar
+);
+
+INSERT INTO colors(bcolor,fcolor)
+VALUES
+('red', 'red'),
+  ('red', 'red'),
+  ('red', NULL),
+  (NULL, 'red'),
+  (NULL, NULL),
+  ('green', 'green'),
+  ('blue', 'blue'),
+  ('blue', 'blue');
+
+  select distinct bcolor from colors;
