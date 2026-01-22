@@ -1,0 +1,53 @@
+SELECT
+  customer_id,
+  SUM (amount)
+FROM
+  payment
+GROUP BY
+  customer_id
+ORDER BY
+  customer_id;
+
+SELECT first_name || ' ' || last_name as customer_name,
+SUM(amount) as total_amount
+FROM payment
+INNER JOIN customer using(customer_id)
+GROUP BY customer_name
+order by SUM(amount) desc;
+
+SELECT
+	staff_id,
+	COUNT (payment_id)
+FROM
+	payment
+GROUP BY
+	staff_id;
+
+SELECT
+  customer_id,
+  staff_id,
+  SUM(amount)
+FROM
+  payment
+GROUP BY
+  staff_id,
+  customer_id
+ORDER BY
+  customer_id;
+
+SELECT
+  customer_id,
+  SUM (amount) amount
+FROM
+  payment
+GROUP BY
+  customer_id
+HAVING
+  SUM (amount) > 200
+ORDER BY
+  amount DESC;
+
+SELECT store_id,count(customer_id) total_cutomer
+from customer 
+GROUP by store_id 
+HAVING count(customer_id)>200;
