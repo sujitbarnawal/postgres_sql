@@ -1,0 +1,29 @@
+SELECT first_name,last_name from customer 
+order by first_name desc;
+
+SELECT first_name,last_name from customer 
+order by first_name asc;
+
+SELECT first_name,last_name from customer
+order by first_name desc, last_name asc 
+limit 5;
+
+SELECT first_name , length(first_name) len from customer
+order by len  limit 10;
+
+
+CREATE TABLE sort_demo(num INT);
+
+INSERT INTO sort_demo(num)
+VALUES
+  (1),
+  (2),
+  (3),
+  (null);
+
+SELECT num FROM sort_demo ORDER BY num;
+
+\pset null null (display null as null otherwise empty)
+
+SELECT num FROM sort_demo ORDER BY num NULLS LAST;
+SELECT num FROM sort_demo ORDER BY num NULLS FIRST;
