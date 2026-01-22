@@ -1,0 +1,27 @@
+create table students(
+    id serial primary key,
+    name varchar,
+    age int,
+    city varchar,
+    grade varchar,
+    marks int
+);
+
+insert into students(id,name,age,city,grade,marks)
+values
+
+( 1, 'Amit', 18, 'Kathmandu' , 'A' ,  85 ),
+( 2, 'Sita', 19, 'Lalitpur' , 'B' ,  72 ),
+( 3, 'Ram', 20, 'Bhaktapur' , 'A' ,  90 ),
+( 4, 'Gita', 18, 'Kathmandu' , 'C' ,  60 ),
+( 5, 'Hari', 21, 'Pokhara' , 'B' ,  75 ),
+( 6, 'Nita', 19, 'Pokhara' , 'A' ,  88 ),
+( 7, 'Kiran', 22, 'Biratnagar' , 'C' ,  55 ),
+( 8, 'Maya', 20, 'Kathmandu' , 'B' ,  70 ),
+( 9, 'Suman', 18, 'Lalitpur' , 'A' ,  92 ),
+( 10, 'Ramesh', 21, 'Butwal' , 'B' ,  78 ),
+( 11, 'Anu', 19, 'Kathmandu' , 'A' ,  81 ),
+( 12, 'Pooja', 22, 'Pokhara' , 'C' ,  58 ),
+( 13, 'Deepak', 20, 'Birgunj' , 'B' ,  74 ),
+( 14, 'Nabin', 18, 'Kathmandu' , 'A' ,  89 ),
+( 15, 'Rekha', 21, 'Lalitpur' , 'B' ,  76 );
