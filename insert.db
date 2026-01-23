@@ -1,0 +1,27 @@
+CREATE TABLE links (
+    id SERIAL PRIMARY KEY,
+    url VARCHAR(255) NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    description VARCHAR(255),
+    last_updated DATE
+);
+
+INSERT INTO links(url,name)
+VALUES('https://www.google.com','Google');
+
+INSERT INTO links(url,name)
+VALUES('https://www.sujitbarnawal.com.np','Sujit''s Portfolio');
+
+INSERT INTO LINKS(url,name,last_updated)
+VALUES('https://www.youtube.com','Youtube','2026-01-15');
+
+INSERT INTO links (url, name)
+VALUES('https://www.postgresql.org','PostgreSQL')
+RETURNING id;
+
+INSERT INTO links(url,name)
+VALUES
+('https://www.sujitbarnawal.com.np','Sujit''s Portfolio'),
+('https://www.youtube.com','Youtube'),
+('https://www.postgresql.org','PostgreSQL')
+RETURNING *;
