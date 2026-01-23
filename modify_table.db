@@ -1,0 +1,22 @@
+DROP TABLE IF EXISTS links;
+
+CREATE TABLE links (
+   link_id serial PRIMARY KEY,
+   title VARCHAR (512) NOT NULL,
+   url VARCHAR (1024) NOT NULL
+);
+
+ALTER TABLE links
+ADD COLUMN active boolean;
+
+ALTER TABLE links
+DROP COLUMN active;
+
+ALTER TABLE links
+RENAME COLUMN title to link_title;
+
+ALTER TABLE links
+RENAME TO Url_Links;
+
+TRUNCATE TABLE Url_Links;
+DROP TABLE Url_links;
